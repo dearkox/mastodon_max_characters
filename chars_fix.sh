@@ -4,7 +4,7 @@ MAX_CHARS=$1
 test "x$2" = "x" -a -z $MASTODON_DIR && MASTODON_DIR=.
 
 # Patch the compose_form.js file
-file1=${MASTODON_DIR%%/}/app/javascript/mastodon/features/compose/components/compose_form.js
+file1=${MASTODON_DIR%%/}/app/javascript/mastodon/features/compose/components/compose_form.jsx
 sed -e "s/length(fulltext) > [0-9]*/length(fulltext) > $MAX_CHARS/ ; s/length(text) > [0-9]*/length(text) > $MAX_CHARS/ ; s/CharacterCounter max={[0-9]*}/CharacterCounter max={$MAX_CHARS}/" $file1
 
 # Patch the status_length_validator.rb file
